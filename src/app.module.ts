@@ -47,12 +47,12 @@ import { AlbumMusicianModule } from './albummusician/albummusician.module';
       keepConnectionAlive: true,
       migrations: [__dirname + '/migration/**/*{.ts,.js}'],
       migrationsRun: true,
-      extra: {
+      extra: process.env.USE_SSL === 'true' ? {
         ssl: {
-          rejectUnauthorized: false, // Disable SSL certificate verification
-          sslmode: 'require' // Require SSL mode
+          rejectUnauthorized: false,
+          sslmode: 'require'
         }
-      }
+      } : undefined
     }),
     RecordLabelModule,
     PrizeModule,
