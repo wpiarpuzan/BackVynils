@@ -20,6 +20,7 @@ services:
   db:
     image: postgres
     environment:
+      - DB_HOST=${DATABASE_URL}
       - POSTGRES_DB=vinyls
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=postgres
